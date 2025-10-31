@@ -3,15 +3,7 @@ const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
 
 const app = express();
-
-// Prisma Client com URL direta (temporário para desenvolvimento)
-const prisma = new PrismaClient({
-  datasources: {
-    db: {
-      url: "postgresql://postgres:senha123@localhost:5432/agendamentos_db",
-    },
-  },
-});
+const prisma = new PrismaClient();
 
 // Middleware
 app.use(cors());

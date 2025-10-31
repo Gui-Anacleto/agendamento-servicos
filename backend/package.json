@@ -4,13 +4,13 @@
   "description": "Backend para sistema de agendamento de serviços",
   "main": "src/server.js",
   "scripts": {
-  "start": "npx prisma generate && node src/server.js",
-  "dev": "nodemon src/server.js",
-  "build": "npx prisma generate",
-  "prisma:migrate": "npx prisma migrate dev",
-  "prisma:generate": "npx prisma generate",
-  "prisma:studio": "npx prisma studio",
-  "prisma:push": "npx prisma db push"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "build": "npx prisma generate",
+    "prisma:migrate": "npx prisma migrate dev",
+    "prisma:generate": "npx prisma generate",
+    "prisma:studio": "npx prisma studio",
+    "prisma:push": "npx prisma db push"
   },
   "dependencies": {
     "express": "^4.18.2",
