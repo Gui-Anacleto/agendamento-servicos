@@ -10,7 +10,8 @@
     "prisma:migrate": "npx prisma migrate dev",
     "prisma:generate": "npx prisma generate",
     "prisma:studio": "npx prisma studio",
-    "prisma:push": "npx prisma db push"
+    "prisma:push": "npx prisma db push",
+    "prisma:seed": "node prisma/seed.js"
   },
   "dependencies": {
     "express": "^4.18.2",

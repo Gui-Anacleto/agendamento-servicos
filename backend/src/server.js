@@ -10,21 +10,21 @@ app.use(cors());
 app.use(express.json());
 
 // Função para popular banco com dados iniciais
-async function popularDadosIniciais() {
-  const count = await prisma.servico.count();
-  if (count === 0) {
-    await prisma.servico.createMany({
-      data: [
-        { nome: "Corte de Cabelo", duracao: 30, preco: 35.0 },
-        { nome: "Barba", duracao: 20, preco: 25.0 },
-        { nome: "Manicure", duracao: 45, preco: 30.0 },
-        { nome: "Pedicure", duracao: 45, preco: 35.0 },
-        { nome: "Corte + Barba", duracao: 50, preco: 55.0 },
-      ],
-    });
-    console.log("✅ Serviços iniciais criados");
-  }
-}
+//async function popularDadosIniciais() {
+//  const count = await prisma.servico.count();
+//  if (count === 0) {
+//    await prisma.servico.createMany({
+//      data: [
+//        { nome: "Corte de Cabelo", duracao: 30, preco: 35.0 },
+//        { nome: "Barba", duracao: 20, preco: 25.0 },
+//        { nome: "Manicure", duracao: 45, preco: 30.0 },
+//        { nome: "Pedicure", duracao: 45, preco: 35.0 },
+//        { nome: "Corte + Barba", duracao: 50, preco: 55.0 },
+//      ],
+//    });
+//    console.log("✅ Serviços iniciais criados");
+//  }
+//}
 
 // Rotas - Serviços
 app.get("/api/servicos", async (req, res) => {
@@ -261,7 +261,7 @@ async function iniciarServidor() {
     await prisma.$connect();
     console.log("✅ Conectado ao PostgreSQL");
 
-    await popularDadosIniciais();
+    // await popularDadosIniciais();
 
     app.listen(PORT, () => {
       console.log(`🚀 Servidor rodando na porta ${PORT}`);
