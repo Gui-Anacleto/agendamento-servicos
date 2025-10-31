@@ -9,7 +9,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 
-const API_URL = "http://localhost:3001/api";
+const API_URL = "http://localhost:10000/api";
 
 function App() {
   const [agendamentos, setAgendamentos] = useState([]);
