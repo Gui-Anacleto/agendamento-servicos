@@ -1,38 +1,39 @@
 // prisma/schema.prisma
 
+// 1. Definição da Fonte de Dados (Datasource)
+// O Render (PostgreSQL) exige o provider e a url via variável de ambiente.
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
+// 2. Definição do Gerador do Cliente (Generator)
 generator client {
   provider = "prisma-client-js"
 }
 
-// ... seus modelos Servico e Agendamento
+// 3. Definição dos Modelos (Seus dados)
+// **********************************************
+// ATENÇÃO: COLOQUE AQUI A DEFINIÇÃO COMPLETA
+// DOS SEUS CAMPOS (id, nome, etc.)!
+// **********************************************
 
-// NOVO: Adicione este bloco
 model Servico {
-  // ...
+  // Exemplo de campos (preencha com os seus!)
+  // id         String    @id @default(uuid())
+  // nome       String    @unique
+  // duracao    Int
+  // preco      Float
+  
+  Agendamentos Agendamento[] // Relacionamento
 }
 
 model Agendamento {
-  // ...
+  // Exemplo de campos (preencha com os seus!)
+  // id          String    @id @default(uuid())
+  // nomeCliente String
+  // servicoId   String
+  // data        String
+  
+  // servico     Servico   @relation(fields: [servicoId], references: [id])
 }
-
-// Adicione este bloco:
-generator client {
-  provider = "prisma-client-js"
-  // ...
-}
-
-datasource db {
-  // ...
-}
-
-// Configuração do comando de seed
-// O Prisma vai procurar este script após o comando db push ou migrate dev
-// Mas vamos usá-lo explicitamente no deploy!
-// Esta parte é para rodar localmente com o `migrate dev --create-only`
-// Não é estritamente necessária para o deploy do Render, mas é boa prática:
-// Basta ter o script `prisma:seed` no package.json
