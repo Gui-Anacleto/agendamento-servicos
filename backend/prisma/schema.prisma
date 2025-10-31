@@ -18,22 +18,31 @@ generator client {
 // DOS SEUS CAMPOS (id, nome, etc.)!
 // **********************************************
 
+// SEÇÃO MODELOS CORRIGIDA NO schema.prisma
+
 model Servico {
-  // Exemplo de campos (preencha com os seus!)
-  // id         String    @id @default(uuid())
-  // nome       String    @unique
-  // duracao    Int
-  // preco      Float
-  
-  Agendamentos Agendamento[] // Relacionamento
+  // 1. ID e Campos Essenciais (Descomentados)
+  id           String        @id @default(uuid())
+  nome         String        @unique // O nome do serviço deve ser único
+  duracao      Int
+  preco        Float
+
+  // 2. Relação
+  Agendamentos Agendamento[]
 }
 
 model Agendamento {
-  // Exemplo de campos (preencha com os seus!)
-  // id          String    @id @default(uuid())
-  // nomeCliente String
-  // servicoId   String
-  // data        String
-  
-  // servico     Servico   @relation(fields: [servicoId], references: [id])
+  // 1. ID e Campos Essenciais (Descomentados)
+  id           String    @id @default(uuid())
+  nomeCliente  String
+  servicoId    String // Chave estrangeira
+  data         String
+  horaEntrada  String
+  horaSaida    String
+  status       String    @default("agendado") // Conforme seu server.js
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  // 2. Relação (Descomentada e Corrigida)
+  servico      Servico   @relation(fields: [servicoId], references: [id])
 }
